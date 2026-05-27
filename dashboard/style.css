@@ -17,6 +17,7 @@ body{
 }
 
 .navbar{
+    background-color: #1e2221;
     display: flex;
     justify-content: space-around;
     align-items: center;

@@ -39,7 +39,7 @@ double getDiskUsage(){
    // ULARGE_INTEGER totalNumberOfFreeBytes; // disk info variable
 // C drive ki info
 BOOL result = GetDiskFreeSpaceExA(
-    "D: \\",
+    "D:\\",
     NULL,
     &freeBytesAvailable,
     &totalNumberOfBytes
@@ -75,7 +75,7 @@ return (double)usage;
     DWORD flage;
 
     //Intenet connect hai ya nhi
-    InternetGetConnectedState(&flage,0);
+  return   InternetGetConnectedState(&flage,0);
  }
 
  // Function cpu usage
@@ -186,6 +186,10 @@ file << "  \"ram\": "
      << ram
      << ",\n";
 
+file << " \"temperature\": "
+     << temp
+     << ",\n";
+
     file << " \"battery\":"
         << battery
         << ",\n";
@@ -196,7 +200,7 @@ file << " \"disk\": "
 
 file << " \"internet\": \""
      << (internet ? "Connected" : "Disconnected")
-     << "\"\n";
+     << "\",\n";
 
 file << " \"status\": \""
      << status
