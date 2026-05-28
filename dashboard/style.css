@@ -35,12 +35,21 @@ img{
     height: 200px;
     border-radius: 50%;
 }
-
+#cpuChart{
+    background-color: rgb(236, 231, 238);
+    height: 20px;
+margin-bottom: 15px;
+}
+#ramChart{
+    background-color: rgb(236, 231, 238);
+    height: 20px;
+margin-bottom: 15px;
+}
 .live-status{
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: rgba(34,197,94,0.2);
+    background-color: red;
     padding: 10px 15px;
     border-radius: 30px;
 

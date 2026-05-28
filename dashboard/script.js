@@ -1,3 +1,42 @@
+let cpuData = [];
+let labels = [];
+
+let ramData = [];
+let ramlabels = [];
+// create graph
+const ctx = 
+document.getElementById('cpuChart');
+
+const cpuChart = new Chart(ctx, {
+    type : 'line',
+
+    data: {
+        labels: labels,
+
+        datasets: [{
+            label : 'CPU Usage',
+            data: cpuData,
+            borderWidth: 2
+        }]
+    }
+});
+
+
+
+const ramctx = 
+document.getElementById('ramChart');
+
+const ramChart = new Chart(ramctx, {
+    type : 'line',
+       data: {
+        labels : ramlabels,
+        datasets: [{
+            label : 'RAM Usage',
+            data : ramData,
+            borderWidth: 2
+        }]
+    }
+});
 // read function stats.json file
 async function loadStats() {
     
@@ -7,6 +46,32 @@ async function loadStats() {
 
         // convert json datat as a object
         const data = await response.json();
+
+        cpuData.push(data.cpu);
+
+        labels.push(
+            new Date().toLocaleTimeString()
+        );
+
+        if(cpuData.length > 10){
+            cpuData.shift();
+            labels.shift();
+        }
+
+        cpuChart.update();
+
+        ramData.push(data.ram);
+
+        ramlabels.push(
+            new Date().toLocaleTimeString()
+        );
+
+        if(ramData.length >10){
+            ramData.shift();
+            ramlabels.shift();
+        }
+
+        ramChart.update();
 
         //CPU value update in cpu html card
         document.getElementById("cpu").innerText = data.cpu.toFixed(1)+ "%";

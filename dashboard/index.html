@@ -31,7 +31,7 @@
     <div class="card">
 <h2> CPU Usage</h2>
 <h1 id="cpu">45%</h1>
-
+<canvas id="cpuChart"></canvas>
 <div class="progress-bar">
     <div class="progress
     cpu-progress"> 
@@ -44,6 +44,7 @@
     <div class="card">
         <h2>RAM Usage</h2>
         <h1 id="ram">72%</h1>
+        <canvas id="ramChart"></canvas>
         <div class="progress-bar">
             <div class="progress
             ram-progress"></div>
@@ -121,6 +122,8 @@ RAM Usage Slightly High
          <p>> stats.json Updated.....</p>
     </div>
     </div>
-    <script src="script.js"></script>
+     <script 
+    src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>  
 </body>
 </html>
