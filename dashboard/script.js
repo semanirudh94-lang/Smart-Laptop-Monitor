@@ -3,6 +3,10 @@ let labels = [];
 
 let ramData = [];
 let ramlabels = [];
+
+let batteryData = [];
+let batteryLabel = [];
+
 // create graph
 const ctx = 
 document.getElementById('cpuChart');
@@ -37,6 +41,24 @@ const ramChart = new Chart(ramctx, {
         }]
     }
 });
+
+const batteryctx  = 
+document.getElementById('batteryChart');
+
+const batteryChart = new Chart(batteryctx, {
+    type : 'pie',
+    data: {
+        labels : ["Battery", "Remaining"],
+        datasets : [{
+            label : 'Battery',
+            data : [0, 100],
+        }]   
+    },
+    options: {
+      animation: false
+    }
+});
+console.log("Pie chart created")
 // read function stats.json file
 async function loadStats() {
     
@@ -46,6 +68,10 @@ async function loadStats() {
 
         // convert json datat as a object
         const data = await response.json();
+       
+         
+
+        //cpu chart
 
         cpuData.push(data.cpu);
 
@@ -60,6 +86,8 @@ async function loadStats() {
 
         cpuChart.update();
 
+        // ram chart
+
         ramData.push(data.ram);
 
         ramlabels.push(
@@ -72,7 +100,13 @@ async function loadStats() {
         }
 
         ramChart.update();
-
+  // battery chart
+        batteryChart.data.datasets[0].data = [
+            data.battery,
+            100 - data.battery
+        ];
+        batteryChart.update();
+       
         //CPU value update in cpu html card
         document.getElementById("cpu").innerText = data.cpu.toFixed(1)+ "%";
 
@@ -141,4 +175,4 @@ async function loadStats() {
 loadStats();
 
 // refresh dashboard after 2 second use the fuction setinterval 
-setInterval(loadStats,2000);
+setInterval(loadStats,5000);
