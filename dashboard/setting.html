@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sign">
+    <h1> Settings</h1></div>
+    <div class="settings-card">
+    <h2>Dashboard Settings </h2>
+    <label>
+        Auto Refresh
+    </label>
+    <br><br>
+    <input type="checkbox" id="autoRefresh">
+    <br><br>
+    <label>
+        Refresh Interval
+    </label>
+    <br><br>
+    <select id="interval">
+        <option value="1000">
+            1 Second
+        </option>
+        <option value="3000">
+            3 Second
+        </option>
+        <option value="5000">
+            5 Second
+        </option>
+    </select>
+    <br><br>
+
+    <label >
+        Dark Mode
+    </label>
+    <input type="checkbox" id="darkMode">
+    <br><br>
+    <button id="savebutton">
+        Save Setting
+    </button>
+    </div>
+    <script src="setting.js"></script>
+</body>
+</html>

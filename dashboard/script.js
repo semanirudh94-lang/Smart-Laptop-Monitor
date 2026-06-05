@@ -175,4 +175,16 @@ async function loadStats() {
 loadStats();
 
 // refresh dashboard after 2 second use the fuction setinterval 
-setInterval(loadStats,5000);
+const autoRefresh = 
+localStorage.getItem("autoRefresh");
+const interval =
+localStorage.getItem("interval");
+if(autoRefresh === "true")
+{
+    let time = 3000;
+    if(interval === "1 sec") time = 1000;
+    if(interval === "3 sec") time = 3000;
+    if(interval === "5 sec") time = 5000;
+    if(interval === "10 sec") time = 10000;
+    setInterval(loadStats,time);
+}
