@@ -1,3 +1,11 @@
+const darkMode =
+localStorage.getItem("darkMode");
+console.log("Dark Mode =",darkMode);
+
+if(darkMode === "true"){
+    document.body.classList.add("dark");
+}
+
 let cpuData = [];
 let labels = [];
 

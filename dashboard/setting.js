@@ -1,3 +1,10 @@
+const darkMode =
+localStorage.getItem("darkMode");
+console.log("Dark Mode =",darkMode);
+
+if(darkMode === "true"){
+    document.body.classList.add("dark");
+}
 console.log("loaded successfully")
 document.getElementById("savebutton").addEventListener("click",()=>{
   console.log("save butto clicked");
@@ -14,3 +21,7 @@ document.getElementById("interval").value
     alert("Setting Saved");
   
 });
+localStorage.setItem(
+    "darkMode",
+    document.getElementById("darkMode").checked
+);

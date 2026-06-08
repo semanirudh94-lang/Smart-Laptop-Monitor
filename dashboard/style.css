@@ -9,6 +9,10 @@ body{
     font-family: 'Poppins', sans-serif;
     color: white;
 }
+.dark{
+    background-color: rgb(218, 218, 228);
+    color : #121212; 
+}
 
 .container{
     width: 90%;
