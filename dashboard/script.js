@@ -169,6 +169,49 @@ async function loadStats() {
         // text update on alert box
 
         document.getElementById("alert").innerText = alertText;
+        let score = 100;
+         if(data.cpu>80){
+            score -= 20;
+         }
+         if(data.ram > 80){
+            score -= 15;
+         }
+         if(data.temperature>75){
+            score-=25;
+         }
+         if(data.battery <20){
+            score -= 20;
+         }
+
+    if(score <0){
+        score = 0;
+    }
+    document.getElementById("healthScore").innerText = score + "%";
+    let healthStatus = "";
+    if(score>=90){
+        healthStatus = "Excellent";
+    }
+    else if(score >=70){
+        healthStatus = "Good";
+    }
+    else if(score >=50){
+        healthStatus = "Average";
+    }
+    else{
+        healthStatus = "Ceitical";
+    }
+    document.getElementById("healthStatus").innerText = healthStatus;
+
+    const healthCircle = document.getElementById("helathScore");
+    if(score>=90){
+        healthCircle.style.color = "lime";
+    }
+    else if(score>=70){
+        healthCircle.style.color = "yellow";
+    }
+    else{
+        healthCircle.style.color = "red";
+    }
     }
 
 
