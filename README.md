@@ -139,7 +139,7 @@ git clone <https://github.com/semanirudh94-lang/Smart-Laptop-Monitor.git>
 
 ### Run Monitoring Agent
 
-Compile and run the C++ monitoring agent.
+ Click on the start.bat file and the c++ program will automatically complie
 
 ### Open Dashboard
 
