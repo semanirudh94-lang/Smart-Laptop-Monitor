@@ -1,3 +1,6 @@
+let StartTime = Date.now();
+
+
 const darkMode =
 localStorage.getItem("darkMode");
 console.log("Dark Mode =",darkMode);
@@ -150,25 +153,30 @@ async function loadStats() {
 
         // Live Alert Logic
         let alertText = "System Stable";
+        let recommendation = "System Running Soothly";
 
         // if CPU is above 80
         if(data.cpu > 80){
             alertText = " High CPU Usage";
+            recommendation = "Close heavy background apps";
         }
 
         // if RAM  is above 85
         else if(data.ram > 85){
             alertText = "RAM Usage High";
+            recommendation = "COnsider freeing memory";
         }
 
         // If temperature is high
         else if(data.temperature > 75){
             alertText = "System Heating";
+            recommendation = "Check system cooling";
         }
 
         // text update on alert box
 
         document.getElementById("alert").innerText = alertText;
+        document.getElementById("recommendation").innerText = recommendation;
         let score = 100;
          if(data.cpu>80){
             score -= 20;
@@ -202,7 +210,7 @@ async function loadStats() {
     }
     document.getElementById("healthStatus").innerText = healthStatus;
 
-    const healthCircle = document.getElementById("helathScore");
+    const healthCircle = document.getElementById("healthScore");
     if(score>=90){
         healthCircle.style.color = "lime";
     }
@@ -239,3 +247,18 @@ if(autoRefresh === "true")
     if(interval === "10 sec") time = 10000;
     setInterval(loadStats,time);
 }
+function updateUptime(){
+    let elapsed = Math.floor(
+        (Date.now() - StartTime) / 1000
+    );
+    let hours = 
+    Math.floor(elapsed / 3600);
+    let minute =
+    Math.floor((elapsed % 3600)/60) ;
+    let seconds = 
+    elapsed % 60;
+
+document.getElementById("uptime").innerText =
+String(hours).padStart(2,'0')+":"+String(minute).padStart(2,'0')+":"+String(seconds).padStart(2,'0');
+}
+setInterval(updateUptime,1000);
