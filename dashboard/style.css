@@ -9,6 +9,24 @@ body{
     font-family: 'Poppins', sans-serif;
     color: white;
 }
+.live-status{
+    animation: pulse 2s infinite;
+}
+@keyframes pulse{
+    0%{
+        box-shadow: 0 0 0 0
+        rgba(255,0,0,0.7);
+    }
+    70%{
+        box-shadow: 0 0 0 15px
+        rgba(255,0,0,0);
+    }
+    100%{
+        box-shadow:0 0 0 0
+        rgba(255,0,0,0);
+    }
+}
+
 .dark{
     background-color: rgb(218, 218, 228);
     color : #121212; 
@@ -19,9 +37,45 @@ body{
     margin: auto;
     padding: 30px 0;
 }
+.navbar{
+    position: relative;
+    overflow: hidden;
+}
+.navbar::before{
+    z-index: 1;
+    content:"";
+    position: absolute;
+    inset: 0;
+    background-image: 
+    radial-gradient(circle,
+    rgba(255,255,255,0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(0,212,255,0.8) 1px, transparent 1px);
+    background-size: 40px 40px , 60px 60px;
+    background-position: 10px 10px, 50px 50px;
+    animation: twinkle 4s infinite alternate;
+    pointer-events: none;
+}
+.navbar > *{
+    position: relative;
+    z-index: 2;
+}
+@keyframes twinkle {
+    0%{
+        opacity: 0.3;
+    }
+    100%{
+        opacity: 0.8;
+    }
+}
+
 
 .navbar{
-    background-color: #1e2221;
+    background-color: rgba(20,20,30,0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid
+    rgba(255,255,255,0.08);
+    box-shadow: 0 0 25px rgba(0,150,225,0.15);
+    transition: 0.3s;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -43,7 +97,6 @@ img{
     font-size: 12px;
     margin: 0;
     opacity: 0.8;
-    
 }
 #cpuChart{
     background-color: rgb(236, 231, 238);
