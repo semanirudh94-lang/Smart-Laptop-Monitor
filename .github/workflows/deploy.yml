@@ -29,4 +29,4 @@ jobs:
             sudo cp -r dashboard agents index.html script.js style.css setting.html setting.js logo.jpg chart.js README.md /var/www/html/
 
             sudo systemctl restart apache2
-EOF
+            EOF
