@@ -10,6 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: SSH Debugger
+        run: |
+        echo "${{ secrets.EC2_SSH_KEY}}" > private_hey.pem
+        chmod 600 private_key.pem
+
+
+        ssh -vvv -i private_key.pem -o STrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }}
       - name: Checkout Repository
         uses: actions/checkout@v4
 
