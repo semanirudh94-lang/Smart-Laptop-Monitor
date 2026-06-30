@@ -28,13 +28,13 @@ jobs:
           username: 'ubuntu' 
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /root/Smart-Laptop-Monitor
+            cd /home/ubuntu/Smart-Laptop-Monitor
 
             git fetch origin
             git reset --hard origin/main
 
             sudo rm -rf /var/www/html/*
-            sudo cp -r . /var/www/html/
+            sudo cp -r dashboard/* /var/www/html/
 
             sudo systemctl restart apache2
 
