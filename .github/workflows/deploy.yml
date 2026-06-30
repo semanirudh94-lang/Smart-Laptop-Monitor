@@ -20,6 +20,22 @@ jobs:
           ssh -vvv -i private_key.pem -o STrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }}
       - name: Checkout Repository
         uses: actions/checkout@v4
+    
+      - name: Run Trivy filesystem Security_Scan
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'json'
+          exit-code: '0'
+          vuln-type: 'os,library'
+          output: 'trivy-results.json'
+
+      - name: Upload Trivy Scan results as Artifacts 
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-scan-results
+          path: trivy-results.json
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.2.2
