@@ -15,9 +15,9 @@ jobs:
         env:
           MY_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY}}
         run: |
-        echo "$MY_PRIVATE_KEY" > private_key.pem
-        chmod 600 private_key.pem
-        ssh -vvv -i private_key.pem -o STrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }}
+          echo "$MY_PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
+          ssh -vvv -i private_key.pem -o STrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }}
       - name: Checkout Repository
         uses: actions/checkout@v4
 
