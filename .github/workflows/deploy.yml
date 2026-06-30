@@ -26,8 +26,8 @@ jobs:
             cd /root/Smart-Laptop-Monitor
             git pull origin main
 
-            rm -rf /var/www/html/*
-            cp -r dashboard agents index.html script.js style.css setting.html setting.js logo.jpg chart.js README.md /var/www/html/
+            sudo rm -rf /var/www/html/*
+            sudo cp -r dashboard agents index.html script.js style.css setting.html setting.js logo.jpg chart.js README.md /var/www/html/
 
-            systemctl restart apache2
-          EOF
+            sudo systemctl restart apache2
+EOF
